@@ -771,8 +771,9 @@
 </section>
 
 <script>
-const SHEET_ID = "15HcLlZ1l0DXyBm2d7-0g7Xsh2uy3iGsyX94L6Qrtwt4"; // <-- මෙතන ඔයාගේ Sheet ID එක දාන්න
-const SHEET_NAME = "Sheet1";
+const SHEET_ID = "15HcLlZ1l0DXyBm2d7-0g7Xsh2uy3iGsyX94L6Qrtwt4"; // 
+const SHEET_NAME = "Sheet1";   
+
 const url = `https://opensheet.elk.sh/${SHEET_ID}/${SHEET_NAME}`;
 
 fetch(url)
@@ -782,21 +783,46 @@ fetch(url)
     grid.innerHTML = "";
 
     data.forEach(item => {
-      const card = `
-        <div class="product-card scroll-reveal" data-category="${item.Category.toLowerCase()}">
-          <img src="${item.Image}" alt="${item.Name}">
-          <div class="product-info">
-            <h3>${item.Name}</h3>
-            <p class="price">Rs. ${item.Price}</p>
-            <p>${item.Description}</p>
-            <p><strong>Size:</strong> ${item.Size}</p>
-          </div>
+      const card = document.createElement("div");
+      card.className = "product-card scroll-reveal";
+      card.setAttribute("data-category", item.Category.toLowerCase());
+
+      card.innerHTML = `
+        <img src="${item.Image}" alt="${item.Name}">
+        <div class="product-info">
+          <h3>${item.Name}</h3>
+          <p class="price">Rs. ${item.Price}</p>
+          <p>${item.Description}</p>
+          <p><strong>Size:</strong> ${item.Size}</p>
         </div>
       `;
-      grid.innerHTML += card;
+
+      grid.appendChild(card);
     });
-  });
-</script>
+
+    // ✅ FILTER FIX (Dynamic products için)
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+        const productCards = document.querySelectorAll('.product-card');
+
+        productCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+
+  })
+  .catch(err => console.error("Sheet Load Error:", err));
         </section>
 
         <!-- About Section -->
