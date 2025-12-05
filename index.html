@@ -755,56 +755,48 @@
 
         <!-- Products Section -->
         <section id="products">
-            <div class="container">
-                <h2 class="scroll-reveal">Our Collection</h2>
-                <div class="filter-buttons scroll-reveal">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="women">Women</button>
-                    <button class="filter-btn" data-filter="men">Men</button>
-                </div>
-                <div class="product-grid">
-                    <!-- Product Card 1 -->
-                    <div class="product-card scroll-reveal" data-category="women">
-                        <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?q=80&w=1887" alt="Elegant Dress">
-                        <div class="product-info">
-                            <h3>Elegant Evening Dress</h3>
-                            <p class="price">$299.99</p>
-                        </div>
-                    </div>
-                    <!-- Product Card 2 -->
-                    <div class="product-card scroll-reveal" data-category="men">
-                        <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=1887" alt="Classic Suit">
-                        <div class="product-info">
-                            <h3>Classic Gent's Suit</h3>
-                            <p class="price">$599.99</p>
-                        </div>
-                    </div>
-                    <!-- Product Card 3 -->
-                    <div class="product-card scroll-reveal" data-category="women">
-                        <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=1887" alt="Luxury Abaya">
-                        <div class="product-info">
-                            <h3>Luxury Embroidered Abaya</h3>
-                            <p class="price">$189.99</p>
-                        </div>
-                    </div>
-                    <!-- Product Card 4 -->
-                    <div class="product-card scroll-reveal" data-category="men">
-                        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=1887" alt="Casual Shirt">
-                        <div class="product-info">
-                            <h3>Premium Cotton Shirt</h3>
-                            <p class="price">$89.99</p>
-                        </div>
-                    </div>
-                     <!-- Product Card 5 -->
-                    <div class="product-card scroll-reveal" data-category="women">
-                        <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=1780" alt="Designer Jeans">
-                        <div class="product-info">
-                            <h3>Designer Skinny Jeans</h3>
-                            <p class="price">$149.99</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="container">
+        <h2 class="scroll-reveal">Our Collection</h2>
+
+        <div class="filter-buttons scroll-reveal">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="women">Women</button>
+            <button class="filter-btn" data-filter="men">Men</button>
+        </div>
+
+        <div class="product-grid" id="product-grid">
+            <!-- Products will load here from Google Sheet -->
+        </div>
+    </div>
+</section>
+
+<script>
+const SHEET_ID = "YOUR_SHEET_ID"; // <-- මෙතන ඔයාගේ Sheet ID එක දාන්න
+const SHEET_NAME = "Sheet1";
+const url = `https://opensheet.elk.sh/${SHEET_ID}/${SHEET_NAME}`;
+
+fetch(url)
+  .then(res => res.json())
+  .then(data => {
+    const grid = document.getElementById("product-grid");
+    grid.innerHTML = "";
+
+    data.forEach(item => {
+      const card = `
+        <div class="product-card scroll-reveal" data-category="${item.Category.toLowerCase()}">
+          <img src="${item.Image}" alt="${item.Name}">
+          <div class="product-info">
+            <h3>${item.Name}</h3>
+            <p class="price">Rs. ${item.Price}</p>
+            <p>${item.Description}</p>
+            <p><strong>Size:</strong> ${item.Size}</p>
+          </div>
+        </div>
+      `;
+      grid.innerHTML += card;
+    });
+  });
+</script>
         </section>
 
         <!-- About Section -->
