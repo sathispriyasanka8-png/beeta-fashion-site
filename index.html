@@ -15,11 +15,23 @@ nav a{color:gold;text-decoration:none;font-weight:800}
 nav ul{list-style:none;display:flex;gap:20px}
 nav ul a{color:white;text-decoration:none}
 section{padding:100px 20px}
-#hero{height:100vh;background:url('https://images.unsplash.com/photo-1483985988355-763728e1935b') center/cover;display:flex;align-items:center;justify-content:center;text-align:center}
-.hero-box{background:rgba(0,0,0,.7);padding:40px;border-radius:10px}
-.hero-box h1{font-size:3rem;color:gold}
 
-#products h2{text-align:center}
+#hero{height:100vh;background:url('https://images.unsplash.com/photo-1483985988355-763728e1935b') center/cover}
+.hero-box{text-align:center;padding-top:200px;background:rgba(0,0,0,.7);height:100%}
+.hero-box h1{font-size:3rem;color:gold}
+.hero-box button{
+padding:15px 40px;
+border:none;
+background:gold;
+color:black;
+font-weight:bold;
+border-radius:30px;
+cursor:pointer;
+box-shadow:0 0 20px gold
+}
+
+#products h2,#about h2,#contact h2,#gallery h2{text-align:center;color:gold}
+
 .filter{text-align:center;margin:20px 0}
 .filter button{padding:10px 20px;border:1px solid gold;background:none;color:white;margin:5px;border-radius:30px;cursor:pointer}
 .filter .active{background:gold;color:black}
@@ -31,7 +43,29 @@ section{padding:100px 20px}
 .product-info{padding:15px}
 .price{color:gold;font-weight:bold}
 
-footer{background:black;text-align:center;padding:20px;color:#aaa;margin-top:50px}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+.gallery-grid img{width:100%;border-radius:10px}
+
+form{max-width:500px;margin:auto}
+input,textarea{width:100%;padding:10px;margin:10px 0;border-radius:5px;border:none}
+
+footer{background:black;text-align:center;padding:20px;color:#aaa}
+
+.whatsapp-float{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+font-size:24px;
+padding:15px 18px;
+border-radius:50%;
+text-decoration:none;
+box-shadow:0 0 20px #25D366;
+z-index:9999;
+animation:pulse 2s infinite;
+}
+@keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.1);}100%{transform:scale(1);}}
 </style>
 </head>
 
@@ -41,7 +75,11 @@ footer{background:black;text-align:center;padding:20px;color:#aaa;margin-top:50p
 <nav>
 <a href="#">Beeta Fashions</a>
 <ul>
+<li><a href="#hero">Home</a></li>
 <li><a href="#products">Products</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
 </header>
@@ -49,25 +87,52 @@ footer{background:black;text-align:center;padding:20px;color:#aaa;margin-top:50p
 <section id="hero">
 <div class="hero-box">
 <h1>Beeta Fashions</h1>
-<p>Luxury Wear Store</p>
+<p>Luxury Clothing Brand</p>
+<button>Shop Now</button>
 </div>
 </section>
 
 <section id="products">
 <h2>Our Collection</h2>
-
 <div class="filter">
 <button class="filter-btn active" data-filter="all">All</button>
 <button class="filter-btn" data-filter="women">Women</button>
 <button class="filter-btn" data-filter="men">Men</button>
 </div>
-
 <div class="product-grid" id="product-grid"></div>
+</section>
+
+<section id="about">
+<h2>About Us</h2>
+<p style="max-width:800px;margin:auto;text-align:center">
+Beeta Fashions is a luxury clothing brand delivering premium fashion with elegance and modern design.
+</p>
+</section>
+
+<section id="gallery">
+<h2>Gallery</h2>
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
+<img src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd53">
+<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f">
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+<form>
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea placeholder="Your Message"></textarea>
+<button type="submit">Send</button>
+</form>
 </section>
 
 <footer>
 © 2024 Beeta Fashions
 </footer>
+
+<a href="https://wa.me/94782676821" class="whatsapp-float" target="_blank">💬</a>
 
 <script>
 const SHEET_ID = "15HcLlZ1l0DXyBm2d7-0g7Xsh2uy3iGsyX94L6Qrtwt4";
