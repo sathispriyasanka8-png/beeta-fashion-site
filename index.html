@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Beeta Fashions | Luxury Clothing Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #000;
+      color: #fff;
+    }
+
+    header {
+      background: #000;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: gold;
+    }
+
+    .hero {
+      height: 90vh;
+      background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+      url("https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 60px;
+      color: gold;
+      animation: fadeIn 2s ease;
+    }
+
+    .btn {
+      margin-top: 25px;
+      padding: 15px 40px;
+      background: gold;
+      color: black;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 30px;
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0; transform: translateY(40px);}
+      to {opacity:1; transform: translateY(0);}
+    }
+
+    .container {
+      width: 90%;
+      margin: auto;
+      padding: 50px 0;
+    }
+
+    h2 {
+      color: gold;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 30px;
+    }
+
+    .product {
+      background: #111;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .product:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px gold;
+    }
+
+    .product img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .info {
+      padding: 20px;
+    }
+
+    .price {
+      color: gold;
+      font-weight: bold;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 25px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 20px;
+      color: #999;
+    }
+
+  </style>
+</head>
+<body>
+
+<header>BEETA FASHIONS</header>
+
+<section class="hero">
+  <div>
+    <h1>Luxury Fashion Store</h1>
+    <button class="btn">Shop Now</button>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Our Products</h2>
+
+  <div class="products">
+
+    <!-- PRODUCT 1 -->
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=1200&q=80">
+      <div class="info">
+        <h3>Luxury Abaya</h3>
+        <p>Size: S / M / L</p>
+        <p class="price">Rs. 5,500</p>
+        <p>Premium quality embroidered abaya.</p>
+        <a class="whatsapp-btn" href="https://wa.me/94782676821" target="_blank">Order via WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 2 -->
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80">
+      <div class="info">
+        <h3>Gent Shirt</h3>
+        <p>Size: M / L / XL</p>
+        <p class="price">Rs. 3,200</p>
+        <p>High quality cotton shirt.</p>
+        <a class="whatsapp-btn" href="https://wa.me/94782676821" target="_blank">Order via WhatsApp</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2025 Beeta Fashions | All Rights Reserved
+</footer>
+
+</body>
+</html>
